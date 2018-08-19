@@ -176,7 +176,7 @@ class ArticleDetailTagView(View):
         all_articles = Article.objects.all()
 
         # 资讯详情
-        news_detail = all_articles.filter(tag=tag).order_by("-order")[0:1]
+        news_detail = all_articles.get(tag=tag)
 
         # 联系方式
         our_contacts = all_articles.filter(tag='our_contacts').order_by("-order")
