@@ -20,7 +20,7 @@ from django.views.static import serve
 
 import xadmin
 from article.views import IndexView, ArticleListView, ArticleDetailView, MoreCasesView, AllianceView, CenterView, \
-    AllAwardCacesView, GoldenSpiderAwardView, GoldenSpiderPollView, AllAwardHistoryView
+    AllAwardCacesView, GoldenSpiderAwardView, GoldenSpiderPollView, AllAwardHistoryView, ArticleDetailTagView
 from prman.settings import MEDIA_ROOT
 from users.views import LogoutView, LoginView, RegisterView, AciveUserView, ForgetPwdView, ResetView, ModifyPwdView
 
@@ -57,6 +57,7 @@ urlpatterns = [
     url(r'^article_list/(?P<tag>.*)/$', ArticleListView.as_view(), name="article_list"),
     # 文章详情页
     url(r'^article_detail/(?P<id>\d+)/$', ArticleDetailView.as_view(), name="article_detail"),
+    url(r'^article_detail/(?P<tag>.*)/$', ArticleDetailTagView.as_view(), name="article_detail_by_tag"),
 
     # 配置上传文件的访问处理函数
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
